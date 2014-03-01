@@ -1,0 +1,71 @@
+# Doge Decimal Classification
+
+Such classification. Many library. So fun. No Dewey. Wow.
+
+## Installation
+
+```bash
+npm install dogedc
+```
+
+## Usage
+
+`dogedc(classNumber, callback)` — convert class from boring old Dewey Decimal Classification to exciting new Doge Decimal Classification. The callback function is passed an object as its sole argument, that object has form:
+
+```js
+{
+    'classNumber': '020',
+    'className': 'Library & information sciences',
+    'dogeClassName': 'Many library. Such information. Very sciences.'
+}
+```
+
+If `classNumber` is falsey or not present, `dogedc` will pick a random class number and pass that to the callback.
+
+```js
+var dogedc = require('dogedc');
+
+// get random Doge Decimal class
+dogedc(function(ddc) {
+    console.log('Class number:', ddc.classNumber);
+    console.log('Doge class name:', ddc.dogeClassName);
+});
+
+// look up 020's class name
+dogedc('020', function(ddc) {
+    console.log('020', ddc.dogeClassName);
+});
+```
+
+The dogedc node module also exposes a `toDoge` function for converting tepid plain human speak into awesome beautiful doge speak. It was written specifically for this module, so as a general-purpose doge-ifier your mileage may vary, but it's there.
+
+```js
+var toDoge = require('dogedc').toDoge;
+
+console.log(toDoge('Hello World'));
+// logs "Many hello. Much world." or some such
+```
+
+## Notes
+
+The `number` argument passed to `dogedc` can be an integer or a string. It's safer to always pass strings because numbers with leading 0s are treated as base 8 in JavaScript (e.g. `020 === 16`);
+
+Right now, only top-level, three-digit classes work.
+
+I culled the list of Dewey Decimal Classes from [the University of Illinois at Urbana-Champaign's](http://www.library.illinois.edu/ugl/about/dewey.html) list. If there are any errors, blame them ;)
+
+Doge Decimal Classification is the first stochastic classification system.* Class names are randomly generated based on the corresponding Dewey Decimal Classification and [well-recognized dogespeak constructions](http://the-toast.net/2014/02/06/linguist-explains-grammar-doge-wow/). For this module's users, that means that the resulting `dogeClassName` of any given class number may differ each time the module is executed.
+
+This is my first NPM module. It might suck.
+
+*…that I'm aware of.
+
+## To Do
+
+There are scattered @todos throughout the code, which mostly have to do with better error handling.
+
+- handle more granular class names...this may be difficult or impossible
+
+## License
+
+[![](https://www.gnu.org/graphics/gplv3-127x51.png)](http://gplv3.fsf.org/)

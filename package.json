@@ -1,0 +1,29 @@
+{
+  "name": "dogedc",
+  "version": "0.1.0",
+  "description": "Doge Decimal Classification",
+  "main": "index.js",
+  "dependencies": {
+  },
+  "devDependencies": {
+  },
+  "scripts": {
+    "test": "echo \"No tests written! Help!\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/phette23/dogedc"
+  },
+  "keywords": [
+    "doge",
+    "dewey",
+    "cataloging",
+    "classification"
+  ],
+  "author": "phette23 <phette23@gmail.com> (http://phette.net/)",
+  "license": "GPLv3",
+  "bugs": {
+    "url": "https://github.com/phette23/dogedc/issues"
+  },
+  "homepage": "https://github.com/phette23/dogedc"
+}
