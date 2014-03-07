@@ -3,12 +3,12 @@
   "version": "0.1.0",
   "description": "Doge Decimal Classification",
   "main": "index.js",
-  "dependencies": {
-  },
+  "dependencies": {},
   "devDependencies": {
+    "nodeunit": "^0.8.6"
   },
   "scripts": {
-    "test": "echo \"No tests written! Help!\" && exit 1"
+    "test": "./node_modules/nodeunit/bin/nodeunit test"
   },
   "repository": {
     "type": "git",
