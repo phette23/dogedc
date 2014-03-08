@@ -64,7 +64,6 @@ This is my first NPM module. It might suck.
 
 There are scattered @todos throughout the code, which mostly have to do with better error handling.
 
-- tests
 - handle more granular class names...this may be difficult or impossible
 
 ## License
