@@ -4,23 +4,26 @@ var fs = require('fs'); // used to get dewey.json data
 
 function DDC (num) {
     var getRandomClassNum = function () {
-        // DDC classes go from 000 - 999
-        // @todo don't return unassigned class numbers, e.g. 991
-        // @todo handle (optional number) classes, e.g. 922
-        var rando = Math.floor(Math.random() * 1000)
-            , classNum = rando.toString();
-
-        // ensure class is 3 chars long
-        // @todo probably should break this out into its own function
-        if (classNum.length == 3) {
-            return classNum;
-        } else if (classNum.length == 2) {
-            return '0' + classNum;
-        } else {
-            // implies classNum.length === 1
-            return '00' + classNum;
+            // DDC classes go from 000 - 999
+            // @todo don't return unassigned class numbers, e.g. 991
+            // @todo handle (optional number) classes, e.g. 922
+            var rando = Math.floor(Math.random() * 1000)
+                , classNum = rando.toString();
+                return leadingZeroes(classNum);
         }
-    };
+        , leadingZeroes = function(s) {
+            // ensure class is 3 chars long
+            var len = s.length;
+
+            if (len == 3) {
+                return s;
+            } else if (len == 2) {
+                return '0' + s;
+            } else {
+                // implies len === 1
+                return '00' + s;
+            }
+        };
 
     // no num given or shorthand ddc(cb) usage? assign random num
     if (!num || typeof num === 'function') {
@@ -33,7 +36,7 @@ function DDC (num) {
     } else if (parseInt(num) < 0) {
         return new Error('Class number is less than 0; DDC stops at 000');
     } else {
-        this.classNumber = num;
+        this.classNumber = leadingZeroes(num);
     }
 }
 
