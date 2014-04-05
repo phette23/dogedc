@@ -42,16 +42,15 @@ function findClassName (cb, ddc) {
     fs.readFile(__dirname + '/data/dewey.json', {
             'encoding': 'utf-8'
         }, function (err, data) {
-            // @todo better error handling
             var dewey = JSON.parse(data);
 
             if (err) {
-            console.error(err);
+                cb(err, null);
             }
 
             ddc.className = dewey[ddc.classNumber];
             ddc.dogeClassName = toDoge(ddc.className);
-            cb(ddc);
+            cb(null, ddc);
     });
 }
 
