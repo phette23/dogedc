@@ -49,6 +49,12 @@ function findClassName (cb, ddc) {
 
             if (err) {
                 cb(err, null);
+                return;
+            } else if (ddc instanceof Error) {
+                // DDC returned an error
+                // e.g. class number was too high or low
+                cb(ddc, null);
+                return;
             }
 
             ddc.className = dewey[ddc.classNumber];
