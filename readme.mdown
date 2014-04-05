@@ -10,7 +10,7 @@ npm install dogedc
 
 ## Usage
 
-`dogedc(classNumber, callback)` — convert class from boring old Dewey Decimal Classification to exciting new Doge Decimal Classification. The callback function is passed an object as its sole argument, that object has form:
+`dogedc(classNumber, callback)` — convert class from boring old Dewey Decimal Classification to exciting new Doge Decimal Classification. The callback function is passed any error as its first argument and an object as its second argument, that object has form:
 
 ```js
 {
@@ -26,13 +26,13 @@ If `classNumber` is falsey or not present, `dogedc` will pick a random class num
 var dogedc = require('dogedc');
 
 // get random Doge Decimal class
-dogedc(function(ddc) {
+dogedc(function(err, ddc) {
     console.log('Class number:', ddc.classNumber);
     console.log('Doge class name:', ddc.dogeClassName);
 });
 
 // look up 020's class name
-dogedc('020', function(ddc) {
+dogedc('020', function(err, ddc) {
     console.log('020', ddc.dogeClassName);
 });
 ```
@@ -62,9 +62,10 @@ This is my first NPM module. It might suck.
 
 ## To Do
 
-There are scattered @todos throughout the code, which mostly have to do with better error handling.
+There are scattered @todos throughout the code.
 
 - handle more granular class names...this may be difficult or impossible
+- make run on node versions 8.x?
 
 ## License
 
