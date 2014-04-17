@@ -16,9 +16,10 @@ exports['Strips out stop words'] = function (test) {
 }
 
 exports['Contains Doge words'] = function (test) {
+    var dwords = /((many)|(much)|(so)|(such)|(very))/i;
     // just running an arbitrary number of tests here
-    test.ok(td('Food & Drink').match(/ ((many)|(much)|(so)|(such)|(very)) /i));
-    test.ok(td('Libraries for specific subjects').match(/ ((many)|(much)|(so)|(such)|(very)) /i));
-    test.ok(td('Information').match(/((many)|(much)|(so)|(such)|(very)) /i));
+    test.ok(td('Food & Drink').match(dwords));
+    test.ok(td('Libraries for specific subjects').match(dwords));
+    test.ok(td('Information').match(dwords));
     test.done();
 }
