@@ -5,12 +5,25 @@ Such classification. Many library. So fun. No Dewey. Wow.
 ## Installation
 
 ```bash
-npm install dogedc
+npm i dogedc
 ```
 
-## Usage
+## CLI
 
-`dogedc(classNumber, callback)` — convert class from boring old Dewey Decimal Classification to exciting new Doge Decimal Classification. The callback function is passed any error as its first argument and an object as its second argument, that object has form:
+Doge Decimal Classification now comes with a command-line interface! Amaze.
+
+```bash
+$ dogedc 123
+So determinism. Many indeterminism.
+$ dogedc # random class
+Very international. Many law. Wow.
+```
+
+You'll need to install it globally (`npm i dogedc -g`) to get the CLI on your path.
+
+## API Usage
+
+`dogedc(classNumber, callback)` — convert class from boring old Dewey Decimal Classification to exciting new Doge Decimal Classification. The callback function is passed any error as its first argument & an object as its second argument, that object has form:
 
 ```js
 {
@@ -20,7 +33,7 @@ npm install dogedc
 }
 ```
 
-If `classNumber` is falsey or not present, `dogedc` will pick a random class number and pass that to the callback.
+If `classNumber` is falsey or not present, `dogedc` will pick a random class number & pass that to the callback.
 
 ```js
 var dogedc = require('dogedc');
@@ -50,13 +63,11 @@ console.log(toDoge('Hello World'));
 
 The `number` argument passed to `dogedc` can be an integer or a string. It's safer to always pass strings because numbers with leading 0s are treated as base 8 in JavaScript (e.g. `020 === 16`);
 
-Right now, only top-level, three-digit classes work.
+Right now, only top-level, 3-digit classes work.
 
 I culled the list of Dewey Decimal Classes from [the University of Illinois at Urbana-Champaign's](http://www.library.illinois.edu/ugl/about/dewey.html) list. If there are any errors, blame them ;)
 
-Doge Decimal Classification is the first stochastic classification system.* Class names are randomly generated based on the corresponding Dewey Decimal Classification and [well-recognized dogespeak constructions](http://the-toast.net/2014/02/06/linguist-explains-grammar-doge-wow/). For this module's users, that means that the resulting `dogeClassName` of any given class number may differ each time the module is executed.
-
-This is my first NPM module. It might suck.
+Doge Decimal Classification is the first stochastic classification system.* Class names are randomly generated based on the corresponding Dewey Decimal Classification & [well-recognized dogespeak constructions](http://the-toast.net/2014/02/06/linguist-explains-grammar-doge-wow/). For this module's users, that means that the resulting `dogeClassName` of any given class number may differ each time the module is executed.
 
 *…that I'm aware of.
 
@@ -65,7 +76,6 @@ This is my first NPM module. It might suck.
 There are scattered @todos throughout the code.
 
 - handle more granular class names...this may be difficult or impossible
-- make run on node versions 8.x?
 
 ## License
 
