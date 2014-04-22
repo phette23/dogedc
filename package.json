@@ -1,6 +1,6 @@
 {
   "name": "dogedc",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "Doge Decimal Classification",
   "main": "index.js",
   "bin": "bin/cli.js",
