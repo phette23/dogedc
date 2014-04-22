@@ -3,6 +3,7 @@
   "version": "0.2.0",
   "description": "Doge Decimal Classification",
   "main": "index.js",
+  "bin": "bin/cli.js",
   "dependencies": {},
   "devDependencies": {
     "nodeunit": "^0.8.6"
