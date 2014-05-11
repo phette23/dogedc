@@ -75,6 +75,8 @@ Doge Decimal Classification is the first stochastic classification system.* Clas
 
 There are scattered @todos throughout the code.
 
+- use streams to read the Dewey JSON
+- fix handling of text input (dogedc "text" causes TypeError)
 - handle more granular class names...this may be difficult or impossible
 
 ## License
