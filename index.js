@@ -1,4 +1,6 @@
-var fs = require('fs'); // used to get dewey.json data
+// used to get dewey.json data
+var fs = require('fs'),
+    JSONStream = require('JSONStream');
 
 // code path: get DDC num => lookup class name in dewey.json => convert class name to Doge => execute provided callback
 
@@ -41,23 +43,16 @@ function DDC (num) {
 }
 
 function findClassName (cb, ddc) {
+    var stream = fs.createReadStream(__dirname + '/data/dewey.json', {encoding: 'utf8'});
+
+    if (ddc instanceof Error) {
+        cb(ddc, null);
+        return;
+    }
+
     // load map of Dewey Classes
-    fs.readFile(__dirname + '/data/dewey.json', {
-            'encoding': 'utf-8'
-        }, function (err, data) {
-            var dewey = JSON.parse(data);
-
-            if (err) {
-                cb(err, null);
-                return;
-            } else if (ddc instanceof Error) {
-                // DDC returned an error
-                // e.g. class number was too high or low
-                cb(ddc, null);
-                return;
-            }
-
-            ddc.className = dewey[ddc.classNumber];
+    stream.pipe(JSONStream.parse(ddc.classNumber)).on('data', function (data) {
+            ddc.className = data;
             ddc.dogeClassName = toDoge(ddc.className);
             cb(null, ddc);
     });

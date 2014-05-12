@@ -4,7 +4,9 @@
   "description": "Doge Decimal Classification",
   "main": "index.js",
   "bin": "bin/cli.js",
-  "dependencies": {},
+  "dependencies": {
+    "JSONStream": "^0.7.3"
+  },
   "devDependencies": {
     "nodeunit": "^0.8.6"
   },
