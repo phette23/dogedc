@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+
+time $(for i in {0..100}; do dogedc >/dev/null; done;)
