@@ -69,13 +69,14 @@ I culled the list of Dewey Decimal Classes from [the University of Illinois at U
 
 Doge Decimal Classification is the first stochastic classification system.* Class names are randomly generated based on the corresponding Dewey Decimal Classification & [well-recognized dogespeak constructions](http://the-toast.net/2014/02/06/linguist-explains-grammar-doge-wow/). For this module's users, that means that the resulting `dogeClassName` of any given class number may differ each time the module is executed.
 
+I tried using `fs.createReadStream` & [JSONStream](https://www.npmjs.org/package/JSONStream) to parse the Dewey JSON file but it turned out to be almost twice as slow as simply using `fs.readFile`. That work is on the `stream` branch & the testing script is at test/bench.
+
 *…that I'm aware of.
 
 ## To Do
 
 There are scattered @todos throughout the code.
 
-- use streams to read the Dewey JSON
 - fix handling of text input (dogedc "text" causes TypeError)
 - handle more granular class names...this may be difficult or impossible
 
