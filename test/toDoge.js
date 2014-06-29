@@ -7,11 +7,12 @@ exports['Returns a string'] = function (test) {
 
 exports['Strips out stop words'] = function (test) {
     // These are Dewey class names
-    test.ok(!td('Libraries for specific subjects').match(' for '));
-    test.ok(!td('Bibliographies of individuals').match(' of '));
-    test.ok(!td('Administration of the physical plant').match(' the '));
-    test.ok(!td('General encyclopedic works in English').match(' in '));
-    test.ok(!td('General encyclopedic works in Spanish & Portuguese').match(' & '));
+    test.ok(!td('Libraries for specific subjects').match(' for.'));
+    test.ok(!td('Bibliographies of individuals').match(' of.'));
+    test.ok(!td('Administration of the physical plant').match(' the.'));
+    test.ok(!td('General encyclopedic works in English').match(' in.'));
+    test.ok(!td('General encyclopedic works in Spanish & Portuguese').match(' &.'));
+    test.ok(!td('Collections of Latin prose or poetry').match(' or.'));
     test.done();
 }
 

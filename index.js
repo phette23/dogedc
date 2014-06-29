@@ -92,7 +92,7 @@ function toDoge (str) {
         }
         // lowercase, strip semicolons, commas, & stop words
         , clean = function(s) {
-            var stops = ['for', 'of', 'the', 'in', '&']
+            var stops = ['for', 'of', 'the', 'in', '&', 'or']
                 , output = s.toLowerCase().replace(/;|,/g,'');
 
             stops.forEach(function (item) {
