@@ -9,7 +9,11 @@
     "nodeunit": "^0.8.8"
   },
   "scripts": {
+    "man": "ronn --roff ./man/dogedc.1.md",
     "test": "./node_modules/nodeunit/bin/nodeunit test"
+  },
+  "directory": {
+    "man": "man"
   },
   "repository": {
     "type": "git",
