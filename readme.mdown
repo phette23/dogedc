@@ -79,7 +79,6 @@ I tried using `fs.createReadStream` & [JSONStream](https://www.npmjs.org/package
 
 There are scattered @todos throughout the code.
 
-- fix handling of text input (dogedc "text" causes TypeError)
 - handle more granular class names...this may be difficult or impossible
 
 ## License
