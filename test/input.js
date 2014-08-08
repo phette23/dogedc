@@ -32,3 +32,19 @@ exports['Passes error to callback on 4 character input'] = function (test) {
         test.done();
     });
 };
+
+exports['Passes error to callback on non-numeric input'] = function (test) {
+    dogedc('abc', function (err, ddc) {
+        test.notStrictEqual(null, err);
+        test.ok(err instanceof Error)
+        dogedc('12a', function (err, dcc) {
+            test.notStrictEqual(null, err)
+            test.ok(err instanceof Error)
+            dogedc('a12', function (err, ddc) {
+                test.notStrictEqual(null, err)
+                test.ok(err instanceof Error)
+                test.done()
+            })
+        })
+    })
+}

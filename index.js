@@ -29,12 +29,13 @@ function DDC (num) {
     if (!num || typeof num === 'function') {
         this.classNumber = getRandomClassNum();
     // validate user input
-    // @todo more error cases? e.g. what if num has non-number chars
-    // @todo or should I truncate > 4 char classes?
     } else if (parseInt(num) > 999) {
         return new Error('Class number is too high; DDC only goes up to 999.');
     } else if (parseInt(num) < 0) {
         return new Error('Class number is less than 0; DDC stops at 000');
+        // test if input is not all digits
+    } else if (!/^\d+$/.test(num)) {
+        return new Error('Class is non-numeric; DDC is 000-999.');
     } else {
         this.classNumber = leadingZeroes(num);
     }
