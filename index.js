@@ -46,11 +46,15 @@ DDC.prototype.leadingZeroes = function (s) {
 
 DDC.prototype.getRandomClassNum = function () {
     // DDC classes go from 000 - 999
-    // @todo don't return unassigned class numbers, e.g. 991
-    // @todo handle (optional number) classes, e.g. 922
-    var rando = Math.floor(Math.random() * 1000)
-        , classNum = rando.toString();
-        return this.leadingZeroes(classNum);
+    var rando = function () { return Math.floor(Math.random() * 1000) }
+        , classNum = this.leadingZeroes(rando().toString())
+        , unassigned = ['007', '008', '009', '024', '029', '040', '041', '042', '043', '044', '045', '046', '047', '048', '049', '104', '112', '125', '132', '134', '136', '151', '157', '159', '163', '164', '217', '219', '237', '244', '256', '257', '258', '288', '298', '308', '309', '311', '312', '313', '329', '396', '397', '416', '424', '426', '434', '436', '444', '446', '454', '456', '464', '466', '474', '476', '484', '486', '504', '517', '518', '524', '571', '626', '654', '655', '656', '689', '699', '744', '756', '762', '768', '775', '776', '777', '789', '804', '921', '922', '923', '924', '925', '926', '927', '928', '991', '992'];
+
+    while (unassigned.indexOf(classNum) != -1) {
+        classNum = this.leadingZeroes(rando().toString());
+    }
+
+    return classNum;
 }
 
 function findClassName (cb, ddc) {
@@ -61,13 +65,13 @@ function findClassName (cb, ddc) {
             var dewey = JSON.parse(data);
 
             if (err) {
-                cb(err, null);
-                return;
+    cb(err, null);
+    return;
             } else if (ddc instanceof Error) {
-                // DDC returned an error
-                // e.g. class number was too high or low
-                cb(ddc, null);
-                return;
+    // DDC returned an error
+    // e.g. class number was too high or low
+    cb(ddc, null);
+    return;
             }
 
             ddc.className = dewey[ddc.classNumber];
@@ -106,10 +110,10 @@ function toDoge (str) {
         // lowercase, strip semicolons, commas, & stop words
         , clean = function(s) {
             var stops = ['for', 'of', 'the', 'in', '&', 'or']
-                , output = s.toLowerCase().replace(/;|,/g,'');
+    , output = s.toLowerCase().replace(/;|,/g,'');
 
             stops.forEach(function (item) {
-                output = output.replace(RegExp(item + ' ', 'g'),'');
+    output = output.replace(RegExp(item + ' ', 'g'),'');
             });
 
             return output;
