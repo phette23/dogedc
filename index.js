@@ -1,44 +1,56 @@
 var fs = require('fs'); // used to get dewey.json data
 
-// code path: get DDC num => lookup class name in dewey.json => convert class name to Doge => execute provided callback
+// code path: dogedc => DDC gets class number => lookup class name in dewey.json => convert class name to Doge => execute provided callback
 
 function DDC (num) {
-    var getRandomClassNum = function () {
-            // DDC classes go from 000 - 999
-            // @todo don't return unassigned class numbers, e.g. 991
-            // @todo handle (optional number) classes, e.g. 922
-            var rando = Math.floor(Math.random() * 1000)
-                , classNum = rando.toString();
-                return leadingZeroes(classNum);
-        }
-        , leadingZeroes = function(s) {
-            // ensure class is 3 chars long
-            var len = s.length;
-
-            if (len == 3) {
-                return s;
-            } else if (len == 2) {
-                return '0' + s;
-            } else {
-                // implies len === 1
-                return '00' + s;
-            }
-        };
+    var validationResult = this.validate(num);
 
     // no num given or shorthand ddc(cb) usage? assign random num
     if (!num || typeof num === 'function') {
-        this.classNumber = getRandomClassNum();
+        this.classNumber = this.getRandomClassNum();
     // validate user input
-    } else if (parseInt(num) > 999) {
+    } else if (validationResult instanceof Error) {
+        return validationResult;
+    } else {
+        this.classNumber = this.leadingZeroes(num);
+    }
+}
+
+// ensure input is 1-3 digits, valid DDC class number
+DDC.prototype.validate = function (num) {
+    var int = parseInt(num);
+
+    if (int > 999) {
         return new Error('Class number is too high; DDC only goes up to 999.');
-    } else if (parseInt(num) < 0) {
-        return new Error('Class number is less than 0; DDC stops at 000');
+    } else if (int < 0) {
+        return new Error('Class number is less than 0; DDC stops at 000.');
         // test if input is not all digits
     } else if (!/^\d+$/.test(num)) {
         return new Error('Class is non-numeric; DDC is 000-999.');
-    } else {
-        this.classNumber = leadingZeroes(num);
     }
+};
+
+DDC.prototype.leadingZeroes = function (s) {
+    // ensure class is 3 chars long
+    var len = s.length;
+
+    if (len == 3) {
+        return s;
+    } else if (len == 2) {
+        return '0' + s;
+    } else {
+        // implies len === 1
+        return '00' + s;
+    }
+}
+
+DDC.prototype.getRandomClassNum = function () {
+    // DDC classes go from 000 - 999
+    // @todo don't return unassigned class numbers, e.g. 991
+    // @todo handle (optional number) classes, e.g. 922
+    var rando = Math.floor(Math.random() * 1000)
+        , classNum = rando.toString();
+        return this.leadingZeroes(classNum);
 }
 
 function findClassName (cb, ddc) {
