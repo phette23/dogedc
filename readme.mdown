@@ -75,12 +75,6 @@ I tried using `fs.createReadStream` & [JSONStream](https://www.npmjs.org/package
 
 *…that I'm aware of.
 
-## To Do
-
-There are scattered @todos throughout the code.
-
-- handle more granular class names...this may be difficult or impossible
-
 ## License
 
 [![](https://www.gnu.org/graphics/gplv3-127x51.png)](http://gplv3.fsf.org/)
