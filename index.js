@@ -1,4 +1,5 @@
-var fs = require('fs'); // used to get dewey.json data
+var fs = require('fs') // used to get dewey.json data
+    , path = require('path');
 
 // code path: dogedc => DDC gets class number => lookup class name in dewey.json => convert class name to Doge => execute provided callback
 
@@ -59,7 +60,7 @@ DDC.prototype.getRandomClassNum = function () {
 
 function findClassName (cb, ddc) {
     // load map of Dewey Classes
-    fs.readFile(__dirname + '/data/dewey.json', {
+    fs.readFile(path.join(__dirname, 'data', 'dewey.json'), {
             'encoding': 'utf-8'
         }, function (err, data) {
             var dewey = JSON.parse(data);
