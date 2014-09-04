@@ -1,6 +1,6 @@
 # Doge Decimal Classification
 
-![](https://travis-ci.org/phette23/dogedc.svg?branch=master)
+[![](https://img.shields.io/travis/phette23/dogedc.svg?style=flat-square)](https://travis-ci.org/phette23/dogedc)
 
 Such classification. Many library. So fun. No Dewey. Wow.
 
