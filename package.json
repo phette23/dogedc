@@ -6,7 +6,7 @@
   "bin": "bin/cli.js",
   "dependencies": {},
   "devDependencies": {
-    "nodeunit": "^0.9.0"
+    "nodeunit": "^0.11.3"
   },
   "scripts": {
     "man": "ronn --roff ./man/dogedc.1.md",
