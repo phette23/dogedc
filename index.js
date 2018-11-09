@@ -13,7 +13,7 @@ function DDC (num) {
     } else if (validationResult instanceof Error) {
         return validationResult;
     } else {
-        this.classNumber = this.leadingZeroes(num);
+        this.classNumber = num.padStart(3, '0');
     }
 }
 
@@ -31,28 +31,14 @@ DDC.prototype.validate = function (num) {
     }
 };
 
-DDC.prototype.leadingZeroes = function (s) {
-    // ensure class is 3 chars long
-    var len = s.length;
-
-    if (len == 3) {
-        return s;
-    } else if (len == 2) {
-        return '0' + s;
-    } else {
-        // implies len === 1
-        return '00' + s;
-    }
-}
-
 DDC.prototype.getRandomClassNum = function () {
     // DDC classes go from 000 - 999
     var rando = function () { return Math.floor(Math.random() * 1000) }
-        , classNum = this.leadingZeroes(rando().toString())
+        , classNum = rando().toString().padStart(3, '0')
         , unassigned = ['007', '008', '009', '024', '029', '040', '041', '042', '043', '044', '045', '046', '047', '048', '049', '104', '112', '125', '132', '134', '136', '151', '157', '159', '163', '164', '217', '219', '237', '244', '256', '257', '258', '288', '298', '308', '309', '311', '312', '313', '329', '396', '397', '416', '424', '426', '434', '436', '444', '446', '454', '456', '464', '466', '474', '476', '484', '486', '504', '517', '518', '524', '571', '626', '654', '655', '656', '689', '699', '744', '756', '762', '768', '775', '776', '777', '789', '804', '921', '922', '923', '924', '925', '926', '927', '928', '991', '992'];
 
     while (unassigned.indexOf(classNum) != -1) {
-        classNum = this.leadingZeroes(rando().toString());
+        classNum = rando().toString().padStart(3, '0');
     }
 
     return classNum;
