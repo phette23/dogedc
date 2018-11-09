@@ -1,5 +1,6 @@
 {
     "node": true,
     "asi": true,
+    "esversion": 6,
     "laxcomma": true
 }
