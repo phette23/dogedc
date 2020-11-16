@@ -1,6 +1,6 @@
 # Doge Decimal Classification
 
-[![](https://img.shields.io/travis/phette23/dogedc.svg?style=flat-square)](https://travis-ci.org/phette23/dogedc) [![](https://img.shields.io/npm/v/dogedc.svg)](https://www.npmjs.com/package/dogedc)
+![Node.js CI](https://github.com/phette23/dogedc/workflows/Node.js%20CI/badge.svg) [![](https://img.shields.io/npm/v/dogedc.svg)](https://www.npmjs.com/package/dogedc)
 
 Such classification. Many library. So fun. No Dewey. Wow.
 
