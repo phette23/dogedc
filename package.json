@@ -4,9 +4,8 @@
   "description": "Doge Decimal Classification",
   "main": "index.js",
   "bin": "bin/cli.js",
-  "dependencies": {},
   "devDependencies": {
-    "nodeunit": "^0.11.3"
+    "nodeunit": "^0.11"
   },
   "scripts": {
     "man": "ronn --roff ./man/dogedc.1.md",
